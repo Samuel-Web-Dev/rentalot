@@ -1,0 +1,99 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; script-src 'self'; connect-src 'self'; base-uri 'self';")
+    title Edit Product
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(
+      href="https://fonts.googleapis.com/css2?family=Playwrite+AR&family=Playwrite+CU&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    )
+    link(rel="stylesheet" href="/css/admin.css")
+    link(rel="stylesheet" href="/css/addproduct.css")
+  body
+    input.menu-toggle(type="checkbox" id="menu-toggle")
+    label.menu-icon(for="menu-toggle")
+      span.material-symbols-outlined menu
+
+    .side-bar
+      label.menu-icon(for="menu-toggle")
+        span.material-symbols-outlined.close close
+      .side-bar__logo
+        a.nav__logo--link(href="/")
+          span R
+          | enta lot
+      .side-bar___content
+        h2 MAIN HOME
+        .side-bar___content--text
+          a(href="/admin/dashboard")
+            span.material-symbols-outlined grid_view
+            | Dashboard
+          a(href="/admin/add-product")
+            span.material-symbols-outlined shopping_cart
+            | Add Product
+
+    header
+      nav.nav
+        .nav__search
+          input(type="text" placeholder="Search")
+          span.material-symbols-outlined search
+        .nav__profile
+          img(src=`/${user.profilePic}` width="50" height="50")
+          div
+            h3 #{user.name}
+            p Seller
+
+    main.content
+      .addproduct
+        h1 Edit Product
+        form(action=`/admin/edit-product` method="POST" enctype="multipart/form-data")
+          .addproduct__content
+            .input-field
+              label(for="name") Product Name
+              input(type="text" name="name" id="name" placeholder="Product Name" value=`${product.name}`)
+              p Do not exceed 100 characters when entering the product name
+            .input-field
+              label(for="category") Category
+              select(name="category" id="category")
+                option(value="Clothes" selected=product.category === 'Clothes') Clothes
+                option(value="Electronics" selected=product.category === 'Electronics') Electronics
+                option(value="Automobile" selected=product.category === 'Automobile') Automobile
+                option(value="Furniture" selected=product.category === 'Furniture') Furniture
+                option(value="Other" selected=product.category === 'Other') Other
+            .input-field
+              label(for="price") Price
+              input(type="number" name="price" id="price" step="0.01" placeholder="Price" value=`${product.price}`)
+            .input-field
+              label(for="contact") Contact
+              input(type="text" name="contact" id="contact" placeholder="Phone Number" value=`${product.contact}`)
+              p Input your contact for potential buyers that might be interested in your product
+            .input-field
+              label(for="description") Description
+              textarea(name="description" id="description" rows="8" placeholder="Description") #{product.description}
+              p Do not exceed 1000 characters when entering the product description
+          .addproduct__img
+            h3 Upload Images
+            .addproduct__img--box
+              img(src=`/image/shop-promo2.png` alt="Image" width="50" height="50")
+            .addproduct__img--box
+              img(src=`/image/slider-1.png` alt="Image" width="50" height="50")
+            .addproduct__img--box
+              input(type="file" name="image" class="file-input")
+            .input-field
+              label(for="date") Product Date
+              input(type="date" name="date" id="date" value=`${product.date}`)
+            button(type="submit") Save Changes
+            input(type="hidden" name="productId" value=`${product._id}`)
+
+      footer.footer
+        p
+          | Copyright &copy; 2024 Shop. Design with &hearts; by 
+          a(href="/") Rentalot
+          | 
+          br 
+          | All rights reserved.
+    script(src='/js/addproduct.js')

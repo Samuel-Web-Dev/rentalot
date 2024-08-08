@@ -1,0 +1,34 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; script-src 'self'; connect-src 'self'; base-uri 'self';")
+    title Upload Profile Picture
+    link(rel="stylesheet" href="/css/upload-profile.css")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Playwrite+AR&display=swap" rel="stylesheet")
+  body
+    .container
+      .upload-box
+        .upload-content
+          h1 Upload Your Profile Picture
+          p Choose an image By clicking on the image-placeholder below.
+          form(action="/upload-profile" method="POST" enctype="multipart/form-data")
+            .file-upload
+              label(for="fileInput")
+                img(src="/image/undraw_Pic_profile_re_7g2h.png" alt="Upload Placeholder" class="upload-placeholder")
+              input#fileInput(type="file" name="image" required hidden)
+            button(type="submit") Upload
+    footer.footer
+      p
+        | &copy; 2024 
+        span.logo Rentalot
+        |. Design with  
+        pan.heart &hearts;
+        | by 
+        a.logo(href="/") Rentalot
+
+    script(src="/js/upload.js")

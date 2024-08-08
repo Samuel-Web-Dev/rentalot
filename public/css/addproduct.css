@@ -1,0 +1,190 @@
+  
+.menu-icon {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    cursor: pointer;
+    color: #fff;
+    font-size: 2rem;
+  }
+
+  @media (max-width: 1200px) {
+    .menu-icon {
+      display: block;
+    }
+}
+.addproduct {
+    margin: 1rem;
+    color: white;
+    overflow: hidden;
+}
+
+.addproduct h1 {
+    color: #777;
+    margin-bottom: 1.5rem;
+}
+
+
+.addproduct form {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.addproduct__content {
+    background: #141d2b;
+    padding: 2rem;
+    width: 50%;
+    border-radius: 10px;
+    height: max-content;
+}
+
+.addproduct__content .input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.addproduct__content .input-field label {
+    font-size: 1.2rem;
+}
+
+.addproduct__content .input-field p {
+    color: #777;
+    font-size: 0.8rem;
+}
+
+.addproduct__content .input-field input {
+    padding: 0.9rem 10px;
+    background: none;
+    border: 1px solid #ccc;
+    color: #ccc;
+    outline: none;
+    font-size: 1rem;
+}
+
+.addproduct__content .input-field input::placeholder {
+    color: #ccc;
+}
+
+.addproduct__content .input-field select {
+    padding: 0.9rem 10px;
+    background: none;
+    border: 1px solid #ccc;
+    color: #ccc;
+    outline: none;
+    font-size: 1rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.input-field option {
+    background: white;
+    color: #000;
+    padding: 10px;
+  }
+
+.input-field textarea {
+    background: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: white;
+    resize: none;
+    outline: none;
+}
+
+.input-field textarea::placeholder {
+    color: white;
+}
+
+/* UPLOAD IMAGE */
+
+.addproduct__img {
+    background: #141d2b;
+    width: 50%;
+    padding: 2rem;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.addproduct__img h3 {
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+
+.addproduct__img--box {
+   border: 1px dashed #777;
+   height: 150px;
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 1rem;
+   height: max-content;
+   padding: 2rem 0;
+}
+
+.addproduct__img--box img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.addproduct__img .input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.addproduct__img .input-field input {
+    background: none;
+    padding: 1rem 10px;
+    border: 1px solid #ccc;
+    color: white;
+    caret-color: white;
+}
+
+.addproduct__img .input-field input::placeholder{
+    color: #ccc;
+}
+
+.addproduct__img button{
+    display: block;
+    margin: auto;
+    margin-top: 2rem;
+    background: #ee4864;
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.addproduct__img button:hover {
+    background: #c52640;
+}
+
+
+
+@media screen and (max-width: 1200px){
+    .addproduct form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .addproduct__content, .addproduct__img {
+        width: 100%;
+    }
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* This will invert the colors, effectively making it white */
+}

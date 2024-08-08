@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; script-src 'self'; connect-src 'self'; base-uri 'self';")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(
+      href="https://fonts.googleapis.com/css2?family=Playwrite+AR&family=Playwrite+CU&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
+      rel="stylesheet"
+    )
+    title Login
+    link(rel="stylesheet" href="/css/login.css")
+  body
+    .login-container
+      h2 Rentalot
+      if errorMessage
+        div.user-message.user-message--error #{errorMessage}
+      .container
+        form(action="/login" method="post")
+          .input-field
+            span.material-symbols-outlined.icon-container mail
+            input(type="email" placeholder="Email" name="email" value=oldInput.email)
+          .input-field
+            span.material-symbols-outlined.icon-container lock
+            input(type="password" placeholder="Password" name="password" value=oldInput.password)
+            //- span.icon-container {showPassword ? eyeSlashIcon : eyeIcon}
+          .forgot-password
+            a(href="/reset") Forgot Password?
+          .button
+            button(type="submit") Login
+        .signUp
+          | Don't have an account?
+          span.condition-color
+            a(href="/signup") Sign Up

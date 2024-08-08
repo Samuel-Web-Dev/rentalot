@@ -1,0 +1,69 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Product Details
+    link(rel="stylesheet" href="/css/index.css")
+    link(rel="stylesheet" href="/css/product-detail.css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playwrite+AR&family=Playwrite+CU&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap")
+
+  body
+    header
+      nav.nav
+        .nav__logo
+          a.nav__logo--link(href="/")
+            span R
+            | entalot
+        .nav__search
+          span.material-symbols-outlined search
+          input(type="text" placeholder="Search Product" disabled)
+        ul.nav__menu
+          li
+            a.nav__menu--link(href="/") Shop
+          if isAuthenticated
+            li
+              a.nav__menu--link(href="/admin/dashboard") Admin
+            li
+              form(action="/logout", method="post")
+                button.logout(type="submit") Logout
+                //- input(type="hidden", name="_csrf", value=csrfToken)
+          if !isAuthenticated
+            li
+              a.nav__menu--link.login(href="/login") Login
+            li
+              a.nav__menu--link.signup(href="/signup") SignUp
+
+    main
+      section.product-details
+        .product-details__container
+          .product-details__image
+            img(src=`/${product.imageUrl}`, alt=product.name)
+          .product-details__info
+            h1.product-details__title #{product.name}
+            .product-details__item
+              span.product-details__item-label Category:
+              span.product-details__item-value #{product.category}
+            .product-details__item
+              span.product-details__item-label Price:
+              span.product-details__item-value $#{product.price}
+            .product-details__item
+              span.product-details__item-label Contact:
+              span.product-details__item-value #{product.contact}
+            .product-details__item
+              span.product-details__item-label Description:
+              span.product-details__item-value #{product.description}
+            .product-details__item
+              span.product-details__item-label Date:
+              span.product-details__item-value #{new Date(product.date).toLocaleDateString()}
+            a.product-details__button(href="/") Buy Now 
+
+      section.author-details
+        .author-details__container
+          .author-details__info
+            h2.author-details__title Author Details
+            p.author-details__name Name: #{product.userId.name}
+            p.author-details__email Email: #{product.userId.email}

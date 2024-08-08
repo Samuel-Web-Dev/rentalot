@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGODB__PASSWORD": "Xj7j8PGOj9YdG3Id",
+        "MONGODB__USER": "samlekchris",
+        "MONGODB__DATABASE": "rentalot"
+    }
+}

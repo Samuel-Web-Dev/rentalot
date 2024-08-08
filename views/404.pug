@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title #{docTitle}
+    link(rel="stylesheet" href="/css/index.css")
+  body
+    header
+      nav.nav
+        .nav__logo
+          a.nav__logo--link(href="/")
+            span R
+            | entalot
+        .nav__search
+          span.material-symbols-outlined search
+          input(type="text" placeholder="Search Product")
+        ul.nav__menu
+          li
+            a.nav__menu--link(href="/") Shop
+          if isAuthenticated
+            li
+              a.nav__menu--link(href="/admin/dashboard") Admin
+            li
+              form(action="/logout", method="post")
+                button.logout(type="submit") Logout
+                //- input(type="hidden", name="_csrf", value=csrfToken)
+          if !isAuthenticated
+            li
+              a.nav__menu--link.login(href="/login") Login
+            li
+              a.nav__menu--link.signup(href="/signup") SignUp
+
+    section 
+        h1.page-not-found Page Not Found

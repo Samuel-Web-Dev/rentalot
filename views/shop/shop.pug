@@ -1,0 +1,155 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; script-src 'self'; connect-src 'self'; base-uri 'self';")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title #{docTitle}
+    link(rel="stylesheet" href="/css/index.css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playwrite+AR&family=Playwrite+CU&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap")
+
+  body
+    header
+      nav.nav
+        .nav__logo
+          a.nav__logo--link(href="/")
+            span R
+            | entalot
+        .nav__search
+          span.material-symbols-outlined search
+          input(type="text" placeholder="Search Product" disabled)
+        ul.nav__menu
+          li
+            a.nav__menu--link(href="/") Shop
+          if isAuthenticated
+            li
+              a.nav__menu--link(href="/admin/dashboard") Admin
+            li
+              form(action="/logout", method="post")
+                button.logout(type="submit") Logout
+          if !isAuthenticated
+            li
+              a.nav__menu--link.login(href="/login") Login
+            li
+              a.nav__menu--link.signup(href="/signup") SignUp
+
+    main
+      section.banner
+        .banner__hero
+          .banner__hero--text
+            h1
+              | Discover Digital
+              br
+              | Art, Collect and
+              br
+              | Sell Your
+              br
+              | Specific Products.
+            p
+              | Partner with one of the world’s largest retailers to showcase your
+              br
+              | brand and products.
+            div
+              a(href="/signup") Get Started
+              a(href="/login") Create
+          .banner__hero--image
+            img(src="/image/hero-image.svg")
+
+      .companies
+        p.companies__title Available market to:
+        .marquee-container
+          .marquee
+            .marquee-content
+              p
+                span.material-symbols-outlined assured_workload
+                | Best Bank
+              p
+                span.material-symbols-outlined flight_takeoff
+                | NEXTFLOWS
+              p
+                span.material-symbols-outlined signal_cellular_alt
+                | MarketSavy
+              p
+                span.material-symbols-outlined bed
+                | EpicDev
+              p
+                span.material-symbols-outlined onsen
+                | TEAMTALK
+
+      section.products
+        h2 Explore The Boundless Universe
+        p Explore and Browse About Digital Art for A More Advanced Experience
+        .categories
+          a.active(href="#", data-category="All") All Category
+          a(href="#", data-category="Clothes") Clothes
+          a(href="#", data-category="Electronics") Electronics
+          a(href="#", data-category="Automobile") Automobile
+          a(href="#", data-category="Furniture") Furniture
+
+        .products__list
+          each product in prods
+            .products__list--item
+              .products__list--item_user
+                img(src=`/${product.userId.profilePic}`)
+                span #{product.userId.name}
+              .products__list--item_details
+                img(src=product.imageUrl)
+                a(href=`/products/product-detail/${product._id}`)
+                  .details
+                    span Details
+                    span.material-symbols-outlined arrow_forward
+
+        .pagination
+          if previousPage && currentPage > 1
+            a(href="#" data-page="1" data-category=currentCategory) 1
+
+          if hasPreviousPage
+            a(href="#" data-page=previousPage data-category=currentCategory) #{previousPage}
+
+          a.active(href="#" data-page=currentPage data-category=currentCategory) #{currentPage}
+
+          if hasNextPage
+            a(href="#" data-page=nextPage data-category=currentCategory) #{nextPage}
+
+          if lastPage != currentPage && nextPage != lastPage
+            a(href="#" data-page=lastPage data-category=currentCategory) #{lastPage}
+
+      section
+        .footer__banner
+          .footer__banner--img
+            img(src="/image/discount-image2.png")
+          .footer__banner--text
+            div Join our marketplace and connect with buyers today.
+            | Publish your product now and reach potential customers!
+            a(href="/signup") Publish Product
+
+    footer.footer
+      .footer__container
+        .footer__column
+          h3.footer__title About Us
+          p.footer__text We are a leading company in our industry, committed to providing quality products and services to our customers.
+        .footer__column
+          h3.footer__title Quick Links
+          ul.footer__links
+            li: a.footer__link Home
+            li: a.footer__link Shop
+            li: a.footer__link About
+            li: a.footer__link Contact
+        .footer__column
+          h3.footer__title Follow Us
+          ul.footer__social
+            li: a.footer__social-link(href="https://www.facebook.com") Facebook
+            li: a.footer__social-link(href="https://www.twitter.com") Twitter
+            li: a.footer__social-link(href="https://www.instagram.com") Instagram
+            li: a.footer__social-link(href="https://www.linkedin.com") LinkedIn
+        .footer__column
+          h3.footer__title Contact Us
+          p.footer__text Email: info@company.com
+          p.footer__text Phone: +123 456 7890
+      .footer__bottom
+        p.footer__bottom-text © 2024 Rentalot. All rights reserved.
+
+    script(src="/js/main.js")
+     

@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob:; script-src 'self'; connect-src 'self'; base-uri 'self';")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(
+      href="https://fonts.googleapis.com/css2?family=Playwrite+AR&family=Playwrite+CU&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    )
+    title SignUp
+    link(rel="stylesheet" href="./css/signup.css")
+    //- link(rel="stylesheet" href="./style.css")
+  body
+    .overall-container
+      .box-container
+        h1.header
+          a(href="/")
+            span R
+            | enta lot
+        .container
+          .left-part
+            h3 Hello, friend!
+            if errorMessage
+               div.user-message.user-message--error #{errorMessage}
+            form(action="/signup" method="post" novalidate)
+              .input-field
+                span.material-symbols-outlined.icon-container person
+                input(type="text" placeholder="Name" name="name", value=oldInput.name)
+              .input-field
+                span.material-symbols-outlined.icon-container mail
+                input(type="email" placeholder="Email" name="email", value=oldInput.email)
+              .input-field
+                span.material-symbols-outlined.icon-container lock
+                input(type="password" placeholder="Password" name="password" value=oldInput.password)
+              .input-field
+                span.material-symbols-outlined.icon-container lock
+                input(type="password" placeholder="Confirm Password" name="confirmPassword" value=oldInput.confirmPassword)
+              .button
+                button(type="submit") Create Account
+            .signin
+              | Already have an account?
+              span.condition-color
+                a(href="/login") Sign In
+          .right-part
+            h2 Glad to see You!
+            p
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborios.
