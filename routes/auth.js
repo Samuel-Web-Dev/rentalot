@@ -9,7 +9,7 @@ const User = require('../models/user')
 routes.get("/signup", authController.getSignup);
 
 routes.post("/signup", [
-  body('name', 'Please Input a valid name without numbers').isAlpha(),
+  body('name', 'Please Input a valid name without numbers').isAlpha('en-US', { ignore: ' ' }),
   check("email").isEmail().withMessage("Please enter a valid Email").custom((value, { req }) => {
   return User.findOne({ email: value }).then((userDoc) => {
       if (userDoc) {
@@ -23,7 +23,7 @@ routes.post("/signup", [
 
 body(
   "password",
-  "Please enter number and letters, not less than 5 characters"
+  "Please enter password(number and letters), not less than 5 characters"
 )
   .isLength({ min: 5 })
   .isAlphanumeric(),
