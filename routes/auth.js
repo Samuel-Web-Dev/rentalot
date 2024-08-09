@@ -63,7 +63,7 @@ routes.get("/reset/:token", authController.getNewPassword);
 routes.post("/new-password",[
   body(
     "password",
-    "Please enter number and letters, not less than 5 characters"
+    "Please enter password(number and letters), not less than 5 characters"
   )
     .isLength({ min: 5 })
     .isAlphanumeric(),
