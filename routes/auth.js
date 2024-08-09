@@ -9,7 +9,7 @@ const User = require('../models/user')
 routes.get("/signup", authController.getSignup);
 
 routes.post("/signup", [
-  body('name').isAlpha('en-US', { ignore: ' ' }).withMessage('Please Input a valid name without numbers'),
+  body('name').trim().isAlpha('en-US', { ignore: ' ' }).withMessage('Please Input a valid name without numbers'),
   check("email").isEmail().withMessage("Please enter a valid Email").custom((value, { req }) => {
   return User.findOne({ email: value }).then((userDoc) => {
       if (userDoc) {
